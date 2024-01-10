@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/Header';
-import Purchase from "./components/Purchase";
-import Footer from "./components/Footer";
+import Header from './Header';
+import Purchase from "./Purchase";
+import Footer from "./Footer";
 
 const Buy = () => {
     return (

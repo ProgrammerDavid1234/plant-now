@@ -1,7 +1,9 @@
 import React from 'react';
 import logoImage from '../assets/plantnow.png'
+import {Link} from 'react-router-dom'
+import { useState } from 'react';
 
-function Header() {
+function Header () {
   return (
     <header>
       <div className="navigation">
@@ -19,19 +21,22 @@ function Header() {
 
             <div className="right-nav">
               <button className="btn">
-                <a href="purchase.html">Make Purchase</a>
+                <Link to="/Purchase">Make Purchase</Link>
               </button>
             </div>
           </div>
 
-          <div className="hamburger-menu">
+          <button className="hamburger-menu">
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
-          </div>
+          </button>
         </nav>
+        <div className={menu_class}></div>
       </div>
     </header>
+
+    
   );
 }
 

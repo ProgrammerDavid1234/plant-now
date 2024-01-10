@@ -1,6 +1,5 @@
 import React from "react";
 import imageFarm from "../assets/farmer 2.jpg";
-// import './ContactForm.css';
 
 function ContactForm() {
   return (

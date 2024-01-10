@@ -1,22 +1,16 @@
 import { useState } from "react";
+import {Route, Routes} from 'react-router-dom'
+import Home from './components/Home'
+import Buy from './components/Buy'
 import "./styles.css";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Advert from "./components/Advert";
-import Form from "./components/Form";
-import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <About />
-      <Advert />
-      <Form />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/Purchase" element={<Buy />} />
+      
+    </Routes>
   );
 };
 
