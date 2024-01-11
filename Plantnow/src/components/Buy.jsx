@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './Header';
 import Purchase from "./Purchase";
 import Footer from "./Footer";

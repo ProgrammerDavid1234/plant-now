@@ -1,9 +1,8 @@
-import React from "react";
 import imageRectangle from "../assets/Rectangle 4.png";
 
 function Advert() {
   return (
-    <section className="advert" id="advert">
+    <section className="advert">
       <div className="container">
         <img src={imageRectangle} alt="image" />
         <div className="text">

@@ -1,4 +1,3 @@
-import React from "react";
 import imageLettuce from "../assets/lettuce.jpg";
 
 function AboutUs() {

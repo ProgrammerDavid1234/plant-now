@@ -1,9 +1,8 @@
-import React from 'react';
 import image from '../assets/image 1.png';
 
 function Hero() {
   return (
-    <section className="hero" style={{ backgroundImage:`url(${image})` }}>
+    <section className="hero" style={{ backgroundImage:`url(${image})` }} id='home'>
       <div className="hero-container">
         <div className="hero-text">
           <h1>

@@ -1,9 +1,8 @@
-import React from "react";
 import imageFarm from "../assets/farmer 2.jpg";
 
 function ContactForm() {
   return (
-    <section className="form" id="contact">
+    <section className="form">
       <div className="form-container">
         <div className="img">
           <img src={imageFarm} alt="image" />
