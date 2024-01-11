@@ -1,6 +1,24 @@
+import { useEffect } from "react";
 import imageFarm from "../assets/farmer 2.jpg";
+import { useState } from "react";
 
 function ContactForm() {
+  const [allFruits, setAllFruits] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://dnbway1.onrender.com/api/fruits/showFruits");
+        const data = await response.json();
+        setAllFruits(data.listAllfruits);
+        console.log(data.listAllfruits);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <section className="form">
       <div className="form-container">
@@ -56,20 +74,9 @@ function ContactForm() {
           <div className="input-group">
             <label htmlFor="plantName">Plant name</label>
             <select name="service" id="service">
-              <option value="banana">Banana</option>
-              <option value="breadfruit">Bread Fruit(Ukwa)</option>
-              <option value="pineapple">Pineapple</option>
-              <option value="coconut">Coconut</option>
-              <option value="avocado">Avocado</option>
-              <option value="guava">Guava</option>
-              <option value="tangerine">Tangerine</option>
-              <option value="local apple">Local Apple</option>
-              <option value="pear">Pear</option>
-              <option value="sour sop">Sour Sop</option>
-              <option value="mango">Mango</option>
-              <option value="cocoa">Cocoa</option>
-              <option value="maize">Maize</option>
-              <option value="orange">Orange</option>
+              {allFruits.map((fruit) => (
+                <option key={fruit._id} value={fruit.fruitName}>{fruit.fruitName} - {fruit.price}</option>
+              ))}
             </select>
           </div>
 
