@@ -1,9 +1,18 @@
-import React from 'react';
 import logoImage from '../assets/plantnow.png'
 import {Link} from 'react-router-dom'
 import { useState } from 'react';
 
+
 function Header () {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setShowMenu(false);
+    }
+  }
   return (
     <header>
       <div className="navigation">
@@ -12,11 +21,11 @@ function Header () {
             <img src={logoImage} alt="logo" />
           </div>
 
-          <div className="nav-list">
+          <div className={`nav-list ${showMenu ? 'show' : ''}`}>
             <ul className="menu">
-              <li><a href="#">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li><Link to="/" onClick={()=> scrollToSection('home')}>Home</Link></li>
+              <li><Link to="/#about" onClick={()=> scrollToSection('about')}>About Us</Link></li>
+              <li><Link to="/#contact" onClick={()=> scrollToSection('contact')}>Contact Us</Link></li>
             </ul>
 
             <div className="right-nav">
@@ -26,13 +35,13 @@ function Header () {
             </div>
           </div>
 
-          <button className="hamburger-menu">
+          <button className="hamburger-menu" onClick={() => setShowMenu(!showMenu)}>
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
           </button>
         </nav>
-        <div className={menu_class}></div>
+
       </div>
     </header>
 

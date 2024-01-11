@@ -1,4 +1,3 @@
-import React from "react";
 import imageFarmer from '../assets/farmer 1.jpg';
 
 function ContactForm() {
