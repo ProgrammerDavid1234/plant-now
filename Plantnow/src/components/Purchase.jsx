@@ -81,12 +81,22 @@ function ContactForm() {
           </div>
 
           <div className="input-group">
-            <label htmlFor="numberOfSeedlings">Number of Seedlings</label>
+            <label htmlFor="numberOfSeedlings">Quantity</label>
             <input
               type="text"
               name="numberOfSeedlings"
               id="numberOfSeedlings"
-              placeholder="Number of Seedlings"
+              placeholder="Quantity"
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="totalcost">Total Cost</label>
+            <input
+              type="text"
+              name="totalcost"
+              id="totalcost"
+              placeholder="Total Cost"
             />
           </div>
 
