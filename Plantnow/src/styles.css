@@ -165,6 +165,10 @@ button {
   background-color: var(--lightgray);
 }
 
+button {
+  background-color: var(--white);
+}
+
 button a {
   text-decoration: none;
   color: #fff;
@@ -279,7 +283,9 @@ h3 {
   font-weight: bold;
 }
 
-.input-group input, .input-group textarea, .input-group select {
+.input-group input,
+.input-group textarea,
+.input-group select {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
