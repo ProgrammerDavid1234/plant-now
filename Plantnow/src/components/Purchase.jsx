@@ -19,6 +19,24 @@ function ContactForm() {
 
     fetchData();
   }, []);
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('https://plantnow-backend.onrender.com/api/seedlings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      const data = await response.json();
+      console.log('Response:', data);
+      // You can handle the response data here
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <section className="form">
       <div className="form-container">
