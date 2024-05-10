@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom'
 import imageFarm from "../assets/farmer 2.jpg";
 
 function ContactForm() {
@@ -115,7 +116,9 @@ function ContactForm() {
             <input type="text" name="totalcost" id="totalcost" placeholder="Total Cost" value={formData.totalcost} readOnly />
           </div>
 
-          <input type="submit" value="Submit" className="submit-btn" />
+          <Link to="/Confirmation">
+        <input type="submit" value="Submit" className="submit-btn" />
+      </Link>
         </form>
 
         <div id="result"></div>
