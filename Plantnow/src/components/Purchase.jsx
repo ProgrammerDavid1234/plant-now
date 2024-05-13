@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import imageFarm from "../assets/farmer 2.jpg";
 
 function ContactForm() {
@@ -15,6 +15,7 @@ function ContactForm() {
     numberOfSeedlings: "",
     totalcost: ""
   });
+  const [formErrors, setFormErrors] = useState({}); // State for form errors
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +33,8 @@ function ContactForm() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error message when user starts typing in a field
+    setFormErrors({ ...formErrors, [e.target.name]: '' });
   };
 
   const handleQuantityChange = (e) => {
@@ -43,20 +46,48 @@ function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('https://plantnow-backend.onrender.com/api/seedlings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      const data = await response.json();
-      console.log('Response:', data);
-      // You can handle the response data here
-    } catch (error) {
-      console.error('Error:', error);
+    if (validateForm()) {
+      try {
+        const response = await fetch('https://plantnow-backend.onrender.com/api/seedlings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        const data = await response.json();
+        console.log('Response:', data);
+        // You can handle the response data here
+
+        // Navigate to Confirmation page after successful form submission
+        window.location.href = "/Confirmation";
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
+  };
+
+  // Validate form fields
+  const validateForm = () => {
+    let errors = {};
+    let isValid = true;
+
+    // Check if name is empty
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    // Check if address is empty
+    if (!formData.address.trim()) {
+      errors.address = 'Address is required';
+      isValid = false;
+    }
+
+    // You can add more validation rules for other fields here...
+
+    setFormErrors(errors);
+    return isValid;
   };
 
   return (
@@ -69,11 +100,13 @@ function ContactForm() {
           <div className="input-group">
             <label htmlFor="name">Full Name</label>
             <input type="text" name="name" id="name" placeholder="Name" onChange={handleChange} />
+            {formErrors.name && <span className="error">{formErrors.name}</span>}
           </div>
 
           <div className="input-group">
             <label htmlFor="address">Address</label>
             <input type="text" name="address" id="address" placeholder="Address" onChange={handleChange} />
+            {formErrors.address && <span className="error">{formErrors.address}</span>}
           </div>
 
           <div className="input-group">
@@ -116,9 +149,9 @@ function ContactForm() {
             <input type="text" name="totalcost" id="totalcost" placeholder="Total Cost" value={formData.totalcost} readOnly />
           </div>
 
-          <Link to="/Confirmation">
-        <input type="submit" value="Submit" className="submit-btn" />
-      </Link>
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
         </form>
 
         <div id="result"></div>
